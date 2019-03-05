@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.repository.Userrepository">
+    <resultMap id="Users" type="User">
+        <id property="uId" column="u_Id" javaType="java.lang.Integer" />
+        <result property="uName" column="u_Name" javaType="java.lang.String"/>
+        <result property="uPassword" column="u_Password" javaType="java.lang.String"/>
+        <result property="uAge" column="u_Age" javaType="java.lang.Integer"/>
+        <result property="uBorrowBook" column="u_Borrow Book" javaType="java.lang.String"/>
+    </resultMap>
+    <insert id="addUser" parameterType="User" >
+        insert  into  Users (u_Name,u_Password,u_Age,u_Borrow Book) values (#{uName},#{uPassword},#{uAge},#{uBorrowBook})
+    </insert>
+    <select id="selectUserAll" resultMap="Users">
+        select * from  Users
+
+    </select>
+    <select id="selectById" parameterType="Integer" resultMap="Users">
+        select * from  Users where  u_Id=#{uId}
+    </select>
+
+</mapper>
